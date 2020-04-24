@@ -1,5 +1,7 @@
 {
   "name": "ble_tester",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

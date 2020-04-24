@@ -1,25 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Inbox
+      Test
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-  
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">
-        Inbox
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-list>
-    <app-message *ngFor="let message of getMessages()" [message]="message"></app-message>
-  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="startScan()">Start Scan</ion-button>
+  <ion-button expand="block" color="primary" (click)="stopScan()">Stop Scan</ion-button>
+  <ion-button expand="block" color="secondary" (click)="disconnect()">Disconnect</ion-button>
+
+  <div *ngIf='!connected'>
+    <ion-list>
+      <ion-item *ngFor="let p of peripherals" (click)="connect(p)" color="medium" lines="full">
+          {{ p || 'Charger' }}
+      </ion-item>
+    </ion-list>
+  </div>
+
 </ion-content>
